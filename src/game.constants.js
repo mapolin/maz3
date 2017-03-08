@@ -54,55 +54,55 @@ export const GAME_LABELS = [
     y: 175,
     font: GAME_FONT.name,
     text: 'Home',
-    size: 30
+    size: 16
   },
   {
     x: 1350,
     y: 980,
     font: GAME_FONT.name,
     text: 'North Valley',
-    size: 30
+    size: 16
   },
   {
     x: 780,
     y: 375,
     font: GAME_FONT.name,
     text: 'Maze',
-    size: 30
+    size: 16
   },
   {
     x: 90,
     y: 1140,
     font: GAME_FONT.name,
     text: 'Garden',
-    size: 30
+    size: 16
   },
   {
     x: 780,
     y: 1110,
     font: GAME_FONT.name,
     text: 'Mountian',
-    size: 30
+    size: 16
   },
   {
     x: 780,
     y: 1110,
     font: GAME_FONT.name,
     text: 'Valley',
-    size: 30
+    size: 16
   },
   {
     x: 780,
     y: 1110,
     font: GAME_FONT.name,
     text: 'About',
-    size: 30
+    size: 16
   },
   {
     x: 780,
     y: 1110,
     font: GAME_FONT.name,
     text: 'Forest',
-    size: 30
+    size: 16
   }
 ];

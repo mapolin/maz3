@@ -19,7 +19,7 @@ import {
 } from './game.constants.js';
 
 // Set debug option as global
-window.GAME_DEBUG = false; //GAME_DEBUG;
+window.GAME_DEBUG = true; //GAME_DEBUG;
 
 // Define game logic handling instances
 // expose as globals for debugging
@@ -104,6 +104,6 @@ const NORTH_VALLEY_MODAL = new Modal(GENERIC_MODAL_HTML.clone(), {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  HOME_MODAL.createModal().parseModal();
-  NORTH_VALLEY_MODAL.createModal().parseModal();
+  // HOME_MODAL.createModal().parseModal();
+  // NORTH_VALLEY_MODAL.createModal().parseModal();
 });

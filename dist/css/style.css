@@ -5,4 +5,10 @@
   transform: translate(-50%, -50%);
   background: #cecece; }
 
+.instructions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%; }
+
 /*# sourceMappingURL=style.css.map */

@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 export class Hero {
   constructor(Game = window.GameInstance, CreatedWorld = {}) {
     this.Game = Game;
@@ -38,9 +40,20 @@ export class Hero {
     });
   }
 
+  findLabel(name) {
+    return _.find(this.CreatedWorld._labels, (item) => {
+      return item.name == name;
+    });
+  }
+
   interact(bodySource, bodyTarget) {
     if(bodySource.name) {
-      console.log(bodySource.name)
+      let label = this.findLabel(bodySource.name);
+
+      if(label && !label.isVisible) {
+        label.appear();
+      }
+
       return false;
     }
 

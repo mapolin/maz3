@@ -17139,49 +17139,49 @@ var GAME_LABELS = exports.GAME_LABELS = [{
   y: 175,
   font: GAME_FONT.name,
   text: 'Home',
-  size: 30
+  size: 16
 }, {
   x: 1350,
   y: 980,
   font: GAME_FONT.name,
   text: 'North Valley',
-  size: 30
+  size: 16
 }, {
   x: 780,
   y: 375,
   font: GAME_FONT.name,
   text: 'Maze',
-  size: 30
+  size: 16
 }, {
   x: 90,
   y: 1140,
   font: GAME_FONT.name,
   text: 'Garden',
-  size: 30
+  size: 16
 }, {
   x: 780,
   y: 1110,
   font: GAME_FONT.name,
   text: 'Mountian',
-  size: 30
+  size: 16
 }, {
   x: 780,
   y: 1110,
   font: GAME_FONT.name,
   text: 'Valley',
-  size: 30
+  size: 16
 }, {
   x: 780,
   y: 1110,
   font: GAME_FONT.name,
   text: 'About',
-  size: 30
+  size: 16
 }, {
   x: 780,
   y: 1110,
   font: GAME_FONT.name,
   text: 'Forest',
-  size: 30
+  size: 16
 }];
 
 },{}],"/Users/mapa/Projects/maz3/src/game.create.js":[function(require,module,exports){
@@ -17190,12 +17190,11 @@ var GAME_LABELS = exports.GAME_LABELS = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Create = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _gameLabel = require('./game.label.js');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -17269,7 +17268,7 @@ var Create = function () {
           name: label.text
         });
 
-        var labelObject = new Label(sign.x, sign.y, label.font, label.text, label.size);
+        var labelObject = new _gameLabel.Label(sign.x, sign.y, label.font, label.text, label.size, _this2.Game);
 
         labelObject.x = labelObject.x - labelObject.centerX;
         labelObject.y = labelObject.y - labelObject.height;
@@ -17316,72 +17315,8 @@ var Create = function () {
 
 exports.Create = Create;
 
-var Label = exports.Label = function (_Create) {
-  _inherits(Label, _Create);
-
-  function Label(x, y, font, text, size) {
-    _classCallCheck(this, Label);
-
-    var _this4 = _possibleConstructorReturn(this, (Label.__proto__ || Object.getPrototypeOf(Label)).call(this));
-
-    _this4.label = _this4.Game.add.bitmapText(x, y, font, text, size);
-    return _this4;
-  }
-
-  _createClass(Label, [{
-    key: 'x',
-    get: function get() {
-      return this.label.position.x;
-    },
-    set: function set(value) {
-      this.label.left = value;
-    }
-  }, {
-    key: 'y',
-    get: function get() {
-      return this.label.position.y;
-    },
-    set: function set(value) {
-      this.label.top = value;
-    }
-  }, {
-    key: 'width',
-    get: function get() {
-      return this.label.width;
-    }
-  }, {
-    key: 'height',
-    get: function get() {
-      return this.label.height;
-    }
-  }, {
-    key: 'centerX',
-    get: function get() {
-      return this.label.width / 2;
-    }
-  }, {
-    key: 'centerY',
-    get: function get() {
-      return this.label.height / 2;
-    }
-  }, {
-    key: 'options',
-    get: function get() {
-      return {
-        x: this.label.x,
-        y: this.label.y,
-        font: this.label.font,
-        text: this.label.text,
-        size: this.label.size
-      };
-    }
-  }]);
-
-  return Label;
-}(Create);
-
-},{"lodash":"/Users/mapa/Projects/maz3/node_modules/lodash/lodash.js"}],"/Users/mapa/Projects/maz3/src/game.hero.js":[function(require,module,exports){
-"use strict";
+},{"./game.label.js":"/Users/mapa/Projects/maz3/src/game.label.js","lodash":"/Users/mapa/Projects/maz3/node_modules/lodash/lodash.js"}],"/Users/mapa/Projects/maz3/src/game.hero.js":[function(require,module,exports){
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -17390,6 +17325,8 @@ Object.defineProperty(exports, "__esModule", {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _ = require('lodash');
 
 var Hero = exports.Hero = function () {
   function Hero() {
@@ -17403,7 +17340,7 @@ var Hero = exports.Hero = function () {
   }
 
   _createClass(Hero, [{
-    key: "create",
+    key: 'create',
     value: function create(x, y, sprite) {
       var _Game$add,
           _this = this;
@@ -17423,17 +17360,17 @@ var Hero = exports.Hero = function () {
       this.Hero.body.debug = !!window.GAME_DEBUG;
     }
   }, {
-    key: "setCollisionGroup",
+    key: 'setCollisionGroup',
     value: function setCollisionGroup(group) {
       this.Hero.body.setCollisionGroup(group);
     }
   }, {
-    key: "collides",
+    key: 'collides',
     value: function collides(group) {
       this.Hero.body.collides(group);
     }
   }, {
-    key: "addAnimations",
+    key: 'addAnimations',
     value: function addAnimations() {
       var _this2 = this;
 
@@ -17444,17 +17381,29 @@ var Hero = exports.Hero = function () {
       });
     }
   }, {
-    key: "interact",
+    key: 'findLabel',
+    value: function findLabel(name) {
+      return _.find(this.CreatedWorld._labels, function (item) {
+        return item.name == name;
+      });
+    }
+  }, {
+    key: 'interact',
     value: function interact(bodySource, bodyTarget) {
       if (bodySource.name) {
-        console.log(bodySource.name);
+        var label = this.findLabel(bodySource.name);
+
+        if (label && !label.isVisible) {
+          label.appear();
+        }
+
         return false;
       }
 
       return true;
     }
   }, {
-    key: "HERO_INSTANCE",
+    key: 'HERO_INSTANCE',
     get: function get() {
       return this.Hero;
     }
@@ -17463,7 +17412,7 @@ var Hero = exports.Hero = function () {
   return Hero;
 }();
 
-},{}],"/Users/mapa/Projects/maz3/src/game.html.js":[function(require,module,exports){
+},{"lodash":"/Users/mapa/Projects/maz3/node_modules/lodash/lodash.js"}],"/Users/mapa/Projects/maz3/src/game.html.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17688,7 +17637,126 @@ var Game = exports.Game = function () {
   return Game;
 }();
 
-},{}],"/Users/mapa/Projects/maz3/src/game.loader.js":[function(require,module,exports){
+},{}],"/Users/mapa/Projects/maz3/src/game.label.js":[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Label = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _gameUtils = require('./game.utils.js');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Label = exports.Label = function () {
+  function Label(x, y, font, text, size, game) {
+    _classCallCheck(this, Label);
+
+    this.Game = game;
+    this.labelGroup = this.Game.add.group();
+    this.background = this.Game.add.graphics(0, 0);
+
+    this.label = this.Game.add.bitmapText(x, y, font, text, size);
+    this.label.tint = 0x000000;
+
+    var labelX = x - this.label.width / 2;
+    var labelY = y - this.label.height / 2;
+    var padding = 15;
+
+    this.background.x = labelX - padding;
+    this.background.y = labelY - padding;
+    this.background.beginFill(0xFFFFFF, 1);
+    this.background.lineStyle(2, 0x000000, 1);
+    this.background.drawRoundedRect(0, 0, this.label.width + padding * 2, this.label.height + padding, 10);
+
+    this.labelGroup.add(this.background);
+    this.labelGroup.add(this.label);
+    this.labelGroup.alpha = 0;
+  }
+
+  _createClass(Label, [{
+    key: 'appear',
+    value: function appear() {
+      this.Game.add.tween(this.labelGroup).to({ y: -20 }, (0, _gameUtils.Random)(400, 600), Phaser.Easing.Quadratic.InOut, true);
+      this.Game.add.tween(this.labelGroup).to({ alpha: 1 }, (0, _gameUtils.Random)(400, 600), Phaser.Easing.Quadratic.InOut, true);
+    }
+  }, {
+    key: 'disappear',
+    value: function disappear() {
+      this.Game.add.tween(this.labelGroup).to({ y: 0 }, (0, _gameUtils.Random)(400, 600), Phaser.Easing.Quadratic.InOut, true);
+      this.Game.add.tween(this.labelGroup).to({ alpha: 0 }, (0, _gameUtils.Random)(400, 600), Phaser.Easing.Quadratic.InOut, true);
+    }
+  }, {
+    key: 'isVisible',
+    get: function get() {
+      return this.labelGroup.alpha > 0;
+    }
+  }, {
+    key: 'group',
+    get: function get() {
+      return this.labelGroup;
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return this.label.text;
+    }
+  }, {
+    key: 'x',
+    get: function get() {
+      return this.label.position.x;
+    },
+    set: function set(value) {
+      this.label.left = value;
+    }
+  }, {
+    key: 'y',
+    get: function get() {
+      return this.label.position.y;
+    },
+    set: function set(value) {
+      this.label.top = value;
+    }
+  }, {
+    key: 'width',
+    get: function get() {
+      return this.label.width;
+    }
+  }, {
+    key: 'height',
+    get: function get() {
+      return this.label.height;
+    }
+  }, {
+    key: 'centerX',
+    get: function get() {
+      return this.label.width / 2;
+    }
+  }, {
+    key: 'centerY',
+    get: function get() {
+      return this.label.height / 2;
+    }
+  }, {
+    key: 'options',
+    get: function get() {
+      return {
+        x: this.label.x,
+        y: this.label.y,
+        font: this.label.font,
+        text: this.label.text,
+        size: this.label.size
+      };
+    }
+  }]);
+
+  return Label;
+}();
+
+},{"./game.utils.js":"/Users/mapa/Projects/maz3/src/game.utils.js"}],"/Users/mapa/Projects/maz3/src/game.loader.js":[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17948,6 +18016,13 @@ var GUID = exports.GUID = function GUID() {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
+var Random = exports.Random = function Random() {
+  var from = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var to = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+  return from + Math.random() * to;
+};
+
 },{}],"/Users/mapa/Projects/maz3/src/maz3.js":[function(require,module,exports){
 'use strict';
 
@@ -17972,7 +18047,7 @@ var _gameConstants = require('./game.constants.js');
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 // Set debug option as global
-window.GAME_DEBUG = false; //GAME_DEBUG;
+window.GAME_DEBUG = true; //GAME_DEBUG;
 
 // Define game logic handling instances
 // expose as globals for debugging
@@ -18054,8 +18129,8 @@ var NORTH_VALLEY_MODAL = new _gameModal.Modal(GENERIC_MODAL_HTML.clone(), {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  HOME_MODAL.createModal().parseModal();
-  NORTH_VALLEY_MODAL.createModal().parseModal();
+  // HOME_MODAL.createModal().parseModal();
+  // NORTH_VALLEY_MODAL.createModal().parseModal();
 });
 
 },{"./game.constants.js":"/Users/mapa/Projects/maz3/src/game.constants.js","./game.create.js":"/Users/mapa/Projects/maz3/src/game.create.js","./game.hero.js":"/Users/mapa/Projects/maz3/src/game.hero.js","./game.html.js":"/Users/mapa/Projects/maz3/src/game.html.js","./game.js":"/Users/mapa/Projects/maz3/src/game.js","./game.loader.js":"/Users/mapa/Projects/maz3/src/game.loader.js","./game.loop.js":"/Users/mapa/Projects/maz3/src/game.loop.js","./game.modal.js":"/Users/mapa/Projects/maz3/src/game.modal.js","./game.render.js":"/Users/mapa/Projects/maz3/src/game.render.js"}]},{},["/Users/mapa/Projects/maz3/src/maz3.js"])
