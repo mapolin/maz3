@@ -17390,14 +17390,16 @@ var Hero = exports.Hero = function () {
   }, {
     key: 'interact',
     value: function interact(bodySource, bodyTarget) {
+      this.closestLabel = false;
+
       if (bodySource.name) {
         var label = this.findLabel(bodySource.name);
 
-        if (label && !label.isVisible) {
-          label.appear();
+        if (!label.isVisible) {
+          this.closestLabel = label;
         }
 
-        return false;
+        return true;
       }
 
       return true;
@@ -17406,6 +17408,11 @@ var Hero = exports.Hero = function () {
     key: 'HERO_INSTANCE',
     get: function get() {
       return this.Hero;
+    }
+  }, {
+    key: 'label',
+    get: function get() {
+      return this.closestLabel;
     }
   }]);
 
@@ -17678,10 +17685,22 @@ var Label = exports.Label = function () {
   }
 
   _createClass(Label, [{
+    key: 'startDisappearTimer',
+    value: function startDisappearTimer() {
+      var _this = this;
+
+      clearTimeout(this._distimeout);
+      this._distimeout = setTimeout(function () {
+        _this.disappear();
+      }, 2000);
+    }
+  }, {
     key: 'appear',
     value: function appear() {
       this.Game.add.tween(this.labelGroup).to({ y: -20 }, (0, _gameUtils.Random)(400, 600), Phaser.Easing.Quadratic.InOut, true);
       this.Game.add.tween(this.labelGroup).to({ alpha: 1 }, (0, _gameUtils.Random)(400, 600), Phaser.Easing.Quadratic.InOut, true);
+
+      this.startDisappearTimer();
     }
   }, {
     key: 'disappear',
@@ -17841,7 +17860,9 @@ var Loop = exports.Loop = function () {
 
     _classCallCheck(this, Loop);
 
-    this.cursors = Game.input.keyboard.createCursorKeys();
+    this.Game = Game;
+    this.cursors = this.Game.input.keyboard.createCursorKeys();
+    this.spaceKey = this.Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   }
 
   _createClass(Loop, [{
@@ -17876,6 +17897,20 @@ var Loop = exports.Loop = function () {
         hero.animations.play('down');
       } else {
         hero.animations.stop();
+      }
+    }
+  }, {
+    key: 'labelUpdate',
+    value: function labelUpdate() {
+      var label = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      if (!label) return;
+
+      // handle spacebar
+      if (this.spaceKey.isDown) {
+        if (label && !label.isVsiible) {
+          label.appear();
+        }
       }
     }
   }]);
@@ -18075,6 +18110,7 @@ var Maz3 = new _game.Game({
     GAME_LOOP = new _gameLoop.Loop(Maz3.GAME_INSTANCE);
 
     GAME_LOOP.heroUpdate(GAME_HERO.HERO_INSTANCE);
+    GAME_LOOP.labelUpdate(GAME_HERO.label);
   },
   // All objects are created here
   create: function create() {

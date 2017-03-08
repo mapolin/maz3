@@ -30,9 +30,18 @@ export class Label {
     this.labelGroup.alpha = 0;
   }
 
+  startDisappearTimer() {
+    clearTimeout(this._distimeout);
+    this._distimeout = setTimeout(() => {
+      this.disappear();
+    }, 2000);
+  }
+
   appear() {
     this.Game.add.tween(this.labelGroup).to({ y: -20 }, Random(400, 600), Phaser.Easing.Quadratic.InOut, true);
     this.Game.add.tween(this.labelGroup).to({ alpha: 1 }, Random(400, 600), Phaser.Easing.Quadratic.InOut, true);
+
+    this.startDisappearTimer();
   }
 
   disappear() {

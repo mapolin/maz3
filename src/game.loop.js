@@ -1,6 +1,8 @@
 export class Loop {
   constructor(Game = window.GameInstance) {
-    this.cursors = Game.input.keyboard.createCursorKeys();
+    this.Game = Game;
+    this.cursors = this.Game.input.keyboard.createCursorKeys();
+    this.spaceKey = this.Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   }
 
   heroUpdate(hero = null) {
@@ -31,6 +33,17 @@ export class Loop {
       hero.animations.play('down');
     } else {
       hero.animations.stop();
+    }
+  }
+
+  labelUpdate(label = null) {
+    if(!label) return;
+
+    // handle spacebar
+    if (this.spaceKey.isDown) {
+      if(label && !label.isVsiible) {
+        label.appear();
+      }
     }
   }
 }

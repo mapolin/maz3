@@ -10,6 +10,10 @@ export class Hero {
     return this.Hero;
   }
 
+  get label() {
+    return this.closestLabel;
+  }
+
   create(x, y, sprite) {
     this.Hero = this.Game.add.sprite(...arguments);
 
@@ -47,14 +51,16 @@ export class Hero {
   }
 
   interact(bodySource, bodyTarget) {
+    this.closestLabel = false;
+
     if(bodySource.name) {
       let label = this.findLabel(bodySource.name);
-
-      if(label && !label.isVisible) {
-        label.appear();
+      
+      if(!label.isVisible) {
+        this.closestLabel = label;
       }
 
-      return false;
+      return true;
     }
 
     return true;

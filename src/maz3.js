@@ -45,6 +45,7 @@ const Maz3 = new Game({
     GAME_LOOP = new Loop( Maz3.GAME_INSTANCE );
 
     GAME_LOOP.heroUpdate( GAME_HERO.HERO_INSTANCE );
+    GAME_LOOP.labelUpdate( GAME_HERO.label );
   },
   // All objects are created here
   create: () => {
